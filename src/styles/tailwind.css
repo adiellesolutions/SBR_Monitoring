@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #0a0f1a;
+    --foreground: #e2e8f0;
+    --primary: #22d3ee;
+    --primary-foreground: #0a0f1a;
+    --secondary: #1e293b;
+    --secondary-foreground: #94a3b8;
+    --accent: #f59e0b;
+    --accent-foreground: #0a0f1a;
+    --muted: #1e293b;
+    --muted-foreground: #64748b;
+    --card: #111827;
+    --card-foreground: #e2e8f0;
+    --border: #1e293b;
+    --input: #1e293b;
+    --ring: #22d3ee;
+    --radius: 0.75rem;
+    --font-sans: var(--font-geist-sans), 'Geist', sans-serif;
+    --font-mono: var(--font-geist-mono), 'Geist Mono', monospace;
+
+    /* Status colors */
+    --status-normal: #22c55e;
+    --status-normal-bg: rgba(34, 197, 94, 0.1);
+    --status-warning: #f59e0b;
+    --status-warning-bg: rgba(245, 158, 11, 0.1);
+    --status-critical: #ef4444;
+    --status-critical-bg: rgba(239, 68, 68, 0.1);
+    --status-offline: #64748b;
+    --status-offline-bg: rgba(100, 116, 139, 0.1);
+
+    /* Severity colors */
+    --severity-info: #3b82f6;
+    --severity-info-bg: rgba(59, 130, 246, 0.1);
+    --severity-warning: #f59e0b;
+    --severity-warning-bg: rgba(245, 158, 11, 0.1);
+    --severity-critical: #ef4444;
+    --severity-critical-bg: rgba(239, 68, 68, 0.12);
+  }
+
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+}
+
+@layer utilities {
+  .font-mono-data {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .text-value-xl {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card-glow-normal {
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.2), 0 4px 24px rgba(34, 197, 94, 0.05);
+  }
+
+  .card-glow-warning {
+    box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.2), 0 4px 24px rgba(245, 158, 11, 0.05);
+  }
+
+  .card-glow-critical {
+    box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.25), 0 4px 24px rgba(239, 68, 68, 0.08);
+  }
+
+  .card-glow-offline {
+    box-shadow: 0 0 0 1px rgba(100, 116, 139, 0.2), 0 4px 24px rgba(0,0,0,0.2);
+  }
+
+  .live-pulse {
+    animation: live-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes live-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .fade-in {
+    animation: fade-in 0.3s ease forwards;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .slide-up {
+    animation: slide-up 0.25s ease forwards;
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .value-flash {
+    animation: value-flash 0.4s ease;
+  }
+
+  @keyframes value-flash {
+    0% { background-color: transparent; }
+    30% { background-color: rgba(34, 211, 238, 0.15); }
+    100% { background-color: transparent; }
+  }
+
+  .gradient-card-border {
+    background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
+  }
+
+  .blob-cyan {
+    background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.15) 0%, transparent 70%);
+    filter: blur(40px);
+  }
+
+  .text-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+
+  .alert-border-critical {
+    border-left: 3px solid var(--status-critical);
+  }
+
+  .alert-border-warning {
+    border-left: 3px solid var(--status-warning);
+  }
+
+  .alert-border-info {
+    border-left: 3px solid var(--severity-info);
+  }
+
+  .alert-border-acknowledged {
+    border-left: 3px solid var(--status-offline);
+  }
+}
